@@ -125,6 +125,9 @@ public class MainActivity extends AppCompatActivity {
             super.onCaptureCompleted(session, request, result);
             Log.e(TAG, String.format("captureCallbackListener %s-%f", String.valueOf(result.get(CaptureResult.LENS_STATE)), result.get(CaptureResult.LENS_FOCUS_DISTANCE) ));
             Log.e(TAG, String.format("AF mode %s-%s", String.valueOf(result.get(CaptureResult.CONTROL_AF_MODE)), String.valueOf(result.get(CaptureResult.CONTROL_AF_STATE)) ));
+            float calculated_distance = 1/result.get(CaptureResult.LENS_FOCUS_DISTANCE);
+            Toast.makeText(MainActivity.this, "Distance:" + calculated_distance + "meters" ,Toast.LENGTH_SHORT).show();
+            createCameraPreview();
         }
     };
     /*final CameraCaptureSession.CaptureCallback captureCallbackListener = new CameraCaptureSession.CaptureCallback() {
@@ -230,6 +233,9 @@ public class MainActivity extends AppCompatActivity {
                     super.onCaptureCompleted(session, request, result);
                     Log.e(TAG, String.format("captureCallbackListener %s-%f", String.valueOf(result.get(CaptureResult.LENS_STATE)), result.get(CaptureResult.LENS_FOCUS_DISTANCE) ));
                     Log.e(TAG, String.format("AF mode %s-%s", String.valueOf(result.get(CaptureResult.CONTROL_AF_MODE)), String.valueOf(result.get(CaptureResult.CONTROL_AF_STATE)) ));
+                    float calculated_distance = 1/result.get(CaptureResult.LENS_FOCUS_DISTANCE);
+                    Toast.makeText(MainActivity.this, "Distance: " + calculated_distance + " meters" ,Toast.LENGTH_SHORT).show();
+                    createCameraPreview();
                 }
             };
             /*final CameraCaptureSession.CaptureCallback captureListener = new CameraCaptureSession.CaptureCallback() {
